@@ -7,7 +7,7 @@ from django.core.files.base import ContentFile
 
 from rest_framework import serializers
 
-from .models import Faq, Contract, ContractUser
+from .models import Faq, Contract, ContractUser, Certificate
    
    
 class Base64FileField(serializers.FileField):
@@ -108,13 +108,13 @@ class ContractSerializer(serializers.ModelSerializer):
         return instance
 
 
-class ContractUserCertSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ContractUser
-        fields = ('passport_data', 'jshshir')
-         
-
-# class CertificateSerializer(serializers.ModelSerializer):
+# class ContractUserCertSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = ContractUser
-#         fields = ('certificate',)
+#         fields = ('passport_data', 'jshshir')
+         
+
+class CertificateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Certificate
+        fields = ('cert_number', 'cert_date', 'full_name')

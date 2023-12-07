@@ -20,7 +20,7 @@ def upload_center_structure_path(instance, image):
     return f"center/structure/{image}"
 
 def upload_gallery_path(instance, image):
-    return f"gallery/{instance.name}/{image}"
+    return f"gallery/{image}"
 
 def upload_document_path(instance, file):
     return f"documents/{file}"

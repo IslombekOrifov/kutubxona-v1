@@ -6,10 +6,10 @@ from rest_framework import (
     response, status, serializers
 )
 
-from .models import Faq, Contract, ContractUser
+from .models import Faq, Contract, ContractUser, Certificate
 from .serializers import (
     FaqSerializer, ContractSerializer, ContractUserSerializer,
-    ContractUserCertSerializer
+    CertificateSerializer
     # CertificateSerializer,
 )
 
@@ -57,20 +57,21 @@ class ContractCreateAPIView(GenericAPIView):
 
         return response.Response(status=status.HTTP_201_CREATED)
 
-    
 
-# class CertificateGetAPIView(GenericAPIView):
-#     queryset = ContractUser.objects.filter(is_active=True)
-#     serializer_class = ContractUserCertSerializer
+class CertificateGetAPIView(GenericAPIView):
+    queryset = Certificate.objects.all()
+    serializer_class = CertificateSerializer
     
-#     def post(self, request, *args, **kwargs):
-#         user_data = self.get_serializer(data=request.data, many=True)
-#         user_data.is_valid(raise_exception=True)
-#         datas = user_data.validated_data
-#         users = []
-#         for data in datas:
-#             certificates = ContractUser.objects.filter(passport_data)
-#             password_data.append(data['password_data'])
-#             jshshir_data.append(data['jshshir'])
-        
-#         return response.Response(status=status.HTTP_200_OK)
+    def post(self, request, *args, **kwargs):
+        cert_data = self.get_serializer(data=request.data)
+        cert_data.is_valid(raise_exception=True)
+        datas = cert_data.validated_data
+        datas.pop('full_name')
+        certificate = Certificate.objects.filter(**datas).get()
+        if certificate:
+            status = status.HTTP_200_OK
+            certificate_data = self.get_serializer(certificate)
+        else:
+            certificate_data = None
+            status = status.HTTP_204_NO_CONTENT
+        return response.Response(certificate_data, status=status)

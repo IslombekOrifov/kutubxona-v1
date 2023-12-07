@@ -207,5 +207,5 @@ class EventImages(models.Model):
     image = models.ImageField(upload_to=upload_gallery_path)
 
     def __str__(self):
-        return self.event
+        return str(self.event.name)
     

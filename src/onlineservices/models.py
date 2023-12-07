@@ -71,3 +71,14 @@ class ContractUser(models.Model):
         
     def __str__(self) -> str:
         return f"{self.full_name}"
+    
+
+class Certificate(models.Model):
+    cert_number = models.CharField(max_length=10)
+    cert_date = models.DateField(blank=True, null=True)
+    full_name = models.CharField(max_length=150, blank=True, null=True)
+    position = models.CharField(max_length=150, blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return str(self.cert_number)

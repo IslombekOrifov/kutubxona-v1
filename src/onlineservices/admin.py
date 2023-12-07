@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from modeltranslation.admin import TranslationAdmin
 
-from .models import Faq, Contract, ContractUser
+from .models import Faq, Contract, ContractUser, Certificate
 
 
 @admin.register(Faq)
@@ -25,4 +25,9 @@ class ContractAdmin(admin.ModelAdmin):
     inlines = [ContractUserAdmin]
     
 
-# @admin.register(ContractUser)
+@admin.register(Certificate)
+class CertificateAdmin(admin.ModelAdmin):
+    list_display = ('id', 'cert_number', 'cert_date', 'full_name', 'position', 
+                    'created')
+    list_filter = ('cert_number', 'created')
+    ordering = ('-created',)

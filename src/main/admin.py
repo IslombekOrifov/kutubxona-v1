@@ -139,6 +139,11 @@ class BranchAdmin(TranslationAdmin):
     )   
     
 
+class EventImagesAdmin(admin.TabularInline):
+    model = EventImages
+    raw_id_fields = ['event']
+    
+
 @admin.register(Event)
 class EventAdmin(TranslationAdmin):
     list_display = ('name', 'image', 'is_active', 'created')
@@ -151,8 +156,7 @@ class EventAdmin(TranslationAdmin):
             'fields': ('image', 'is_active')
         }),
     ) 
+    inlines = [EventImagesAdmin]
     
 
-@admin.register(EventImages)
-class EventImagesAdmin(admin.ModelAdmin):
-    list_display = ('event', 'image')
+
