@@ -1,1 +1,1 @@
-# kutubxona-v1
+# kutubxona
