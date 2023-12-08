@@ -124,6 +124,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+DATE_INPUT_FORMATS = ['%Y-%m-%d']
+
 LANGUAGES = [
     ('uz', "O'zbekcha"),
     ('ru', 'Русский'),

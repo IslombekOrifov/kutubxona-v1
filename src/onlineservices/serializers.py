@@ -118,3 +118,7 @@ class CertificateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Certificate
         fields = ('cert_number', 'cert_date', 'full_name')
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['cert_date'].input_formats = ['%Y-%m-%d']

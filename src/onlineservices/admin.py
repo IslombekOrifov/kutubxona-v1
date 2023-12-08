@@ -2,6 +2,8 @@ from django.contrib import admin
 
 from modeltranslation.admin import TranslationAdmin
 
+from import_export.admin import ImportMixin
+
 from .models import Faq, Contract, ContractUser, Certificate
 
 
@@ -26,7 +28,7 @@ class ContractAdmin(admin.ModelAdmin):
     
 
 @admin.register(Certificate)
-class CertificateAdmin(admin.ModelAdmin):
+class CertificateAdmin(ImportMixin, admin.ModelAdmin):
     list_display = ('id', 'cert_number', 'cert_date', 'full_name', 'position', 
                     'created')
     list_filter = ('cert_number', 'created')

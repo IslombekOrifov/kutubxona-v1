@@ -69,9 +69,9 @@ class CertificateGetAPIView(GenericAPIView):
         datas.pop('full_name')
         certificate = Certificate.objects.filter(**datas).get()
         if certificate:
-            status = status.HTTP_200_OK
-            certificate_data = self.get_serializer(certificate)
+            status1 = status.HTTP_200_OK
+            certificate_data = self.get_serializer(certificate).data
         else:
             certificate_data = None
-            status = status.HTTP_204_NO_CONTENT
-        return response.Response(certificate_data, status=status)
+            status1 = status.HTTP_204_NO_CONTENT
+        return response.Response(certificate_data, status=status1)
