@@ -150,7 +150,7 @@ class EventAdmin(TranslationAdmin):
     ordering = ('created', 'is_active')
     fieldsets = (
         ('Translateble', {
-          'fields': ('name', 'description')
+          'fields': ('name', 'description', 'about')
         }),
         ('Standard info', {
             'fields': ('image', 'is_active')
