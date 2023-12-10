@@ -16,7 +16,7 @@ class CompetitionSerializer(serializers.ModelSerializer):
     conditions = CompetetionConditionSerializer(many=True)
     class Meta:
         model = Competition
-        fields = ['id', 'name_uz', 'name_ru', 'name_en']
+        fields = ['id', 'name_uz', 'name_ru', 'name_en', 'conditions']
 
 
 class CompetetionQuestionSerializer(serializers.ModelSerializer):
