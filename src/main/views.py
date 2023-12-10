@@ -49,10 +49,10 @@ class MainAPIView(GenericAPIView):
         results_serializer = ResultSerializer(results)
         
         treners = LeaderAndTrener.objects.filter(is_leader=False)[:12]
-        treners_serializer = TrenerSerializer(treners, many=True)
+        treners_serializer = TrenerSerializer(treners, many=True, context={'request': request})
         
         partner = Partner.objects.filter(is_active=True)[:12]
-        partner_serializer = PartnerSerializer(partner, many=True)
+        partner_serializer = PartnerSerializer(partner, many=True, context={'request': request})
         
         contacts = CenterContact.objects.all().prefetch_related('socials').last()
         contacts_serializer = CenterContactSerializer(contacts)
@@ -148,7 +148,9 @@ class EventListAPIView(GenericAPIView):
     serializer_class = EventListSerializer
     
     def get(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
+        queryset = self.get_queryset()#.values('id', 'name_uz', 'name_ru', 'name_en', 
+        #                                       'description_uz', 'description_ru', 'description_en', 
+        #                                       'about_uz', 'about_ru', 'about_en', 'image')
         serializer = self.get_serializer(queryset, many=True)
         return response.Response(serializer.data)
     
