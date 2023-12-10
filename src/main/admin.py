@@ -32,7 +32,7 @@ class NewsAdmin(TranslationAdmin):
     ordering = ('is_news', 'is_active', 'created')
     fieldsets = (
         ('Translateble', {
-          'fields': ('name', 'description')
+          'fields': ('name', 'about', 'description')
         }),
         ('Standard info', {
             'fields': ('image', 'is_active', 'is_news')

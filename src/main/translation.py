@@ -8,7 +8,7 @@ class SliderTranslationOptions(TranslationOptions):
 
 @register(News)
 class NewsTranslationOptions(TranslationOptions):
-    fields = ('name', 'description')
+    fields = ('name', 'about', 'description')
     
 
 @register(LeaderAndTrener)

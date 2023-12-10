@@ -28,6 +28,7 @@ class Slider(models.Model):
 class News(models.Model):
     name = models.CharField(max_length=150)
     description = models.TextField()
+    about = models.CharField(max_length=150)
     image = models.ImageField(upload_to=upload_news_path, blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_news = models.BooleanField(default=True)
