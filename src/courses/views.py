@@ -48,7 +48,7 @@ class CourseDetailAPIView(GenericAPIView):
 
 class CourseApplicationCreateAPIView(GenericAPIView):
     queryset = Course.objects.filter(is_active=True)
-    serializer_class = CourseSerializer
+    serializer_class = CourseApplicationSerializer
     
     def post(self, request, *args, **kwargs):
         course = get_object_or_404(Course, pk=kwargs['pk'], is_active=True)
