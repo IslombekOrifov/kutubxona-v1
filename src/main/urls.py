@@ -15,5 +15,6 @@ urlpatterns = [
     path('event/list/', views.EventListAPIView.as_view()),
     path('event/detail/<pk>/', views.EventDetailAPIView.as_view()),
     path('user/contact/', views.UserContactCreateAPIView.as_view()),
+    path('news/detail/<pk>/', views.NewsDetailAPIView.as_view()),
     
 ]

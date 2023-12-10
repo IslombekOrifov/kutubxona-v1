@@ -174,3 +174,13 @@ class UserContactCreateAPIView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return response.Response(status=status.HTTP_201_CREATED)
+    
+
+class NewsDetailAPIView(GenericAPIView):
+    queryset = News.objects.filter(is_active=True)
+    serializer_class = NewsSerializer
+    
+    def get(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        return response.Response(serializer.data)
