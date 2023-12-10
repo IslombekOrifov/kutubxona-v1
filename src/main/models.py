@@ -191,7 +191,7 @@ class Branch(models.Model):
 class Event(models.Model):
     name = models.CharField(max_length=250)
     description = models.TextField()
-
+    about = models.CharField(max_length=100)
     image = models.ImageField(upload_to=upload_gallery_path)
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
