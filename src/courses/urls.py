@@ -7,4 +7,5 @@ urlpatterns = [
     path('online/list/', views.OnlineCoursesAPIView.as_view()),
     path('offline/list/', views.OfflineCoursesAPIView.as_view()),
     path('detail/<pk>/', views.CourseDetailAPIView.as_view()),
+    path('application/create/<pk>/', views.CourseApplicationCreateAPIView.as_view()),
 ]
