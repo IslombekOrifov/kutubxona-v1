@@ -48,5 +48,5 @@ class BranchTranslationOptions(TranslationOptions):
 
 @register(Event)
 class EventTranslationOptions(TranslationOptions):
-    fields = ('name', 'description')
+    fields = ('name', 'about', 'description')
     
