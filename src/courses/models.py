@@ -20,6 +20,9 @@ class Course(models.Model):
     
     class Meta:
         ordering = ['-created']
+        
+    def __str__(self) -> str:
+        return self.name
 
     
 class CourseApplication(models.Model):
@@ -38,3 +41,5 @@ class CourseApplication(models.Model):
     class Meta:
         ordering = ['-created']
         
+    def __str__(self) -> str:
+        return self.full_name
