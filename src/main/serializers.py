@@ -37,11 +37,23 @@ class LeaderSerializer(serializers.ModelSerializer):
         model = LeaderAndTrener
         exclude = ["is_leader", 'telegram', 'instagram', 'facebook']
         
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        # Update the image URL to include the full path
+        representation['image'] = self.context['request'].build_absolute_uri(instance.image.url)
+        return representation
+        
 
 class PartnerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Partner
         exclude = ['name', 'is_active']
+        
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        # Update the image URL to include the full path
+        representation['logo'] = self.context['request'].build_absolute_uri(instance.logo.url)
+        return representation
         
 
 class RegionSerializer(serializers.ModelSerializer):
@@ -114,6 +126,7 @@ class EventSerializer(serializers.ModelSerializer):
         model = Event
         fields = ('id', 'name_uz', 'name_ru', 'name_en',
                   'description_uz', 'description_ru', 'description_en',
+                  'about_uz', 'about_ru', 'about_en',
                   'image', 'images', 'created')
 
 
